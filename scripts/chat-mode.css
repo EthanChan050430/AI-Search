@@ -1,0 +1,575 @@
+/* =====================================
+   聊天模式简化搜索框样式
+   ===================================== */
+
+/* 隐藏正常模式搜索框在聊天模式下 */
+.ai-search-section.chat-mode .normal-mode {
+    display: none !important;
+}
+
+/* 显示聊天模式搜索框 */
+.ai-search-section.chat-mode .chat-search-container {
+    display: block !important;
+}
+
+/* 聊天模式搜索框容器 */
+.chat-search-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255, 255, 255, 0);
+    padding: 12px 16px 16px 16px;
+    z-index: 999;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* 聊天搜索框包装器 */
+.chat-search-wrapper {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* 功能菜单按钮 */
+.chat-functions-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: var(--accent-color);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0, 122, 255, 0.3);
+}
+
+.chat-functions-btn:hover {
+    background: rgba(0, 122, 255, 0.8);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 122, 255, 0.4);
+}
+
+.chat-functions-btn.active {
+    background: rgba(0, 122, 255, 0.9);
+    transform: rotate(45deg);
+}
+
+/* 聊天功能按钮禁用状态 */
+.chat-functions-btn[data-disabled="true"] {
+    opacity: 0.5 !important;
+    pointer-events: none !important;
+    cursor: not-allowed !important;
+    transform: none !important;
+}
+
+/* 功能菜单面板 */
+.chat-functions-menu {
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 0;
+    min-width: 280px;
+    max-width: 320px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px) scale(0.95);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+}
+
+.chat-functions-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.functions-menu-content {
+    padding: 16px;
+}
+
+/* 聊天模式角色选择器 */
+.chat-role-selector-wrapper {
+    margin-bottom: 16px;
+}
+
+.chat-role-selector-wrapper .role-selector-container {
+    margin: 0;
+}
+
+.chat-role-selector-wrapper .role-selector-header {
+    background: rgba(0, 122, 255, 0.1);
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+}
+
+.chat-role-selector-wrapper .role-selector-content {
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.chat-role-selector-wrapper .role-option {
+    padding: 6px 12px;
+    margin: 0 0 4px 0;
+    border-radius: 6px;
+}
+
+/* 聊天模式模型选择器 */
+.chat-model-selector-wrapper {
+    margin-bottom: 16px;
+}
+
+.chat-model-selector-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    color: var(--text-color-secondary);
+    margin-bottom: 6px;
+}
+
+.chat-model-selector {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    background: white;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.chat-model-selector:focus {
+    border-color: var(--accent-color);
+}
+
+/* 聊天模式文件上传 */
+.chat-file-upload-area {
+    margin-bottom: 16px;
+}
+
+.chat-file-upload-input {
+    display: none;
+}
+
+.chat-file-upload-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: rgba(0, 122, 255, 0.1);
+    border: 1px solid rgba(0, 122, 255, 0.3);
+    border-radius: 8px;
+    color: var(--accent-color);
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    width: 100%;
+    justify-content: center;
+}
+
+.chat-file-upload-btn:hover {
+    background: rgba(0, 122, 255, 0.15);
+    border-color: rgba(0, 122, 255, 0.5);
+}
+
+/* 聊天模式功能按钮 */
+.chat-function-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.chat-deep-search-btn,
+.chat-ai-draw-btn {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    background: white;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+.chat-deep-search-btn:hover,
+.chat-ai-draw-btn:hover {
+    background: rgba(0, 122, 255, 0.1);
+    border-color: var(--accent-color);
+}
+
+.chat-deep-search-btn.active,
+.chat-ai-draw-btn.active {
+    background: var(--accent-color);
+    color: white;
+    border-color: var(--accent-color);
+}
+
+/* 简化搜索输入框 */
+.chat-search-input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    background: white;
+    font-size: 16px;
+    line-height: 1.4;
+    outline: none;
+    resize: none;
+    min-height: 40px;
+    max-height: 120px;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.chat-search-input:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+}
+
+.chat-search-input::placeholder {
+    color: var(--text-color-muted);
+}
+
+/* 聊天发送按钮 */
+.chat-search-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: var(--accent-color);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.chat-search-btn:hover {
+    background: rgba(0, 122, 255, 0.8);
+    transform: translateY(-1px);
+}
+
+.chat-search-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.chat-search-btn.loading {
+    animation: spin 1s linear infinite;
+}
+
+/* 聊天模式已上传文件列表 */
+.chat-uploaded-files {
+    margin-top: 12px;
+    background: rgba(0, 122, 255, 0.05);
+    border-radius: 12px;
+    padding: 12px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.chat-uploaded-files-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: var(--text-color-secondary);
+}
+
+.chat-clear-files-btn {
+    border: none;
+    background: rgba(255, 59, 48, 0.1);
+    color: var(--danger-color);
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.chat-clear-files-btn:hover {
+    background: rgba(255, 59, 48, 0.2);
+}
+
+.chat-file-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+/* 聊天模式文件项样式 */
+.chat-file-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 12px;
+}
+
+.chat-file-info {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex: 1;
+    min-width: 0;
+}
+
+.chat-file-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--text-color);
+}
+
+.chat-remove-file-btn {
+    border: none;
+    background: rgba(255, 59, 48, 0.1);
+    color: var(--danger-color);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    transition: background-color 0.3s ease;
+    flex-shrink: 0;
+}
+
+.chat-remove-file-btn:hover {
+    background: rgba(255, 59, 48, 0.2);
+}
+
+/* 点击外部区域关闭功能菜单 */
+.chat-functions-menu.show ~ .chat-search-input {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+}
+
+/* 确保功能菜单不被其他元素遮挡 */
+.chat-functions-menu {
+    z-index: 1001;
+}
+
+/* 为功能菜单添加动画效果 */
+.chat-functions-menu::before {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 20px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid white;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+/* 改善深色模式下的显示效果 */
+@media (prefers-color-scheme: dark) {
+    .chat-search-container {
+        background: rgba(0, 0, 0, 0.3);
+        border-top-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .chat-functions-menu {
+        background: #1a1a1a;
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .chat-functions-menu::before {
+        border-top-color: #1a1a1a;
+    }
+    
+    .chat-search-input {
+        background: #2a2a2a;
+        border-color: rgba(255, 255, 255, 0.2);
+        color: white;
+    }
+    
+    .chat-model-selector {
+        background: #2a2a2a;
+        border-color: rgba(255, 255, 255, 0.2);
+        color: white;
+    }
+    
+    .chat-file-upload-btn {
+        background: rgba(0, 122, 255, 0.2);
+        border-color: rgba(0, 122, 255, 0.4);
+    }
+    
+    .chat-deep-search-btn,
+    .chat-ai-draw-btn {
+        background: #2a2a2a;
+        border-color: rgba(255, 255, 255, 0.2);
+        color: white;
+    }
+}
+
+/* AI绘图结果在聊天模式中的样式 */
+.ai-search-section.chat-mode .ai-draw-result {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 16px 0;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.ai-search-section.chat-mode .ai-draw-result-title {
+    color: #ffffff;
+}
+
+.ai-search-section.chat-mode .ai-draw-action-btn {
+    background: rgba(255, 255, 255, 0.12) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    color: #ffffff !important;
+    display: flex !important;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    min-height: 36px;
+    justify-content: center;
+}
+
+.ai-search-section.chat-mode .ai-draw-action-btn:hover {
+    background: rgba(255, 255, 255, 0.25) !important;
+    border-color: #007bff !important;
+    transform: translateY(-1px);
+    color: #ffffff !important;
+    text-decoration: none;
+}
+
+/* 聊天模式下AI绘图按钮专用渐变色 */
+.ai-search-section.chat-mode .ai-draw-download-btn {
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.8), rgba(102, 187, 106, 0.8)) !important;
+    color: white !important;
+    border: 1px solid rgba(76, 175, 80, 0.6) !important;
+}
+
+.ai-search-section.chat-mode .ai-draw-download-btn:hover {
+    background: linear-gradient(135deg, rgba(56, 142, 60, 0.9), rgba(76, 175, 80, 0.9)) !important;
+    color: white !important;
+    border-color: rgba(56, 142, 60, 0.8) !important;
+}
+
+.ai-search-section.chat-mode .ai-draw-regenerate-btn {
+    background: linear-gradient(135deg, rgba(255, 152, 0, 0.8), rgba(255, 183, 77, 0.8)) !important;
+    color: white !important;
+    border: 1px solid rgba(255, 152, 0, 0.6) !important;
+}
+
+.ai-search-section.chat-mode .ai-draw-regenerate-btn:hover {
+    background: linear-gradient(135deg, rgba(245, 124, 0, 0.9), rgba(255, 152, 0, 0.9)) !important;
+    color: white !important;
+    border-color: rgba(245, 124, 0, 0.8) !important;
+}
+
+/* 聊天模式下AI绘图图片容器样式 */
+.ai-search-section.chat-mode .ai-draw-image-container {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.ai-search-section.chat-mode .ai-draw-image-container:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4);
+}
+
+.ai-search-section.chat-mode .ai-draw-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* 优化聊天模式下的滚动体验 */
+.ai-search-section.chat-mode .messages-container {
+    padding-bottom: 100px; /* 为固定在底部的搜索框留出空间 */
+}
+
+/* 隐藏原有功能控制区域在聊天模式下 */
+.ai-search-section.chat-mode .controls-area {
+    display: none !important;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .chat-search-container {
+        padding: 10px 12px 12px 12px;
+    }
+    
+    .chat-functions-menu {
+        min-width: 260px;
+        max-width: calc(100vw - 32px);
+    }
+    
+    .chat-function-buttons {
+        flex-direction: column;
+        gap: 6px;
+    }
+    
+    .chat-deep-search-btn,
+    .chat-ai-draw-btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .chat-search-wrapper {
+        gap: 6px;
+    }
+    
+    .chat-functions-btn,
+    .chat-search-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
+    }
+    
+    .chat-search-input {
+        font-size: 14px;
+        padding: 10px 14px;
+    }
+}

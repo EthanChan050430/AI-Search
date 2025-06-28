@@ -1,0 +1,127 @@
+/* =====================================
+   模型选择器下拉框样式修复
+   ===================================== */
+
+/* 确保下拉框在所有浏览器中都有合适的样式 */
+.model-selector {
+    /* 基础样式重置 */
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+    
+    /* 背景和边框 */
+    background: linear-gradient(135deg, rgba(44, 62, 80, 0.9), rgba(52, 73, 94, 0.8)) !important;
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 12px !important;
+    
+    /* 文字和字体 */
+    color: #ffffff !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    font-family: inherit !important;
+    
+    /* 内边距和大小 */
+    padding: 12px 40px 12px 16px !important;
+    min-width: 180px !important;
+    flex: 1;
+    
+    /* 其他属性 */
+    outline: none !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    
+    /* 自定义下拉箭头 */
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 12px center !important;
+    background-size: 16px !important;
+    
+    /* 阴影效果 */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+.model-selector:hover {
+    background: linear-gradient(135deg, rgba(52, 73, 94, 0.95), rgba(44, 62, 80, 0.9)) !important;
+    border-color: #3498db !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.4) !important;
+}
+
+.model-selector:focus {
+    border-color: #3498db !important;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3), 0 6px 30px rgba(0, 0, 0, 0.4) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* 下拉选项样式 - 使用重要性声明确保生效 */
+.model-selector option {
+    background: #2c3e50 !important;
+    color: #ffffff !important;
+    padding: 12px 16px !important;
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+    font-family: inherit !important;
+    border: none !important;
+    margin: 0 !important;
+    line-height: 1.4 !important;
+}
+
+.model-selector option:hover,
+.model-selector option:focus {
+    background: #34495e !important;
+    color: #3498db !important;
+}
+
+.model-selector option:checked,
+.model-selector option:selected,
+.model-selector option[selected] {
+    background: linear-gradient(135deg, #3498db, #2980b9) !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+}
+
+/* 针对 WebKit 浏览器的特殊处理 */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    .model-selector {
+        background: #2c3e50 !important;
+        border: 2px solid #34495e !important;
+    }
+    
+    .model-selector:hover {
+        background: #34495e !important;
+        border-color: #3498db !important;
+    }
+}
+
+/* 针对 Firefox 的特殊处理 */
+@-moz-document url-prefix() {
+    .model-selector {
+        background: #2c3e50 !important;
+        color: #ffffff !important;
+        border: 2px solid #34495e !important;
+    }
+    
+    .model-selector option {
+        background: #2c3e50 !important;
+        color: #ffffff !important;
+    }
+}
+
+/* 确保在深色主题下的可读性 */
+@media (prefers-color-scheme: dark) {
+    .model-selector {
+        background: #1a252f !important;
+        border-color: #34495e !important;
+    }
+    
+    .model-selector option {
+        background: #1a252f !important;
+        color: #ecf0f1 !important;
+    }
+    
+    .model-selector option:checked,
+    .model-selector option:selected {
+        background: #3498db !important;
+        color: #ffffff !important;
+    }
+}

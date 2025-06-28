@@ -1,15 +1,28 @@
-# AI搜索项目
+<!-- LOGO --><center>
+<img src="./images/AISEARCH.png" alt="AI搜索" class="ai-search-logo" style="width: 200px; height: auto;">
+</center>
 
 ## 项目描述
-这是一个简洁的AI搜索页面，提供智能搜索和对话服务。
+这是一个简洁的AI搜索页面，提供智能搜索和对话服务。\
+你可以在[筑梦项目阁](https://chengyuxuan.top)上进行在线体验。
 
 ## 项目结构
 ```
-ai-search-project/
+mainpage/
 ├── ai-search.html          # AI搜索主页面
 ├── think-verification.js   # Think标签验证工具
 ├── scripts/
 │   └── ai-search.js       # AI搜索核心脚本
+|   ├── ai-search-fixed-button.js # AI搜索固定按钮脚本
+│   └── chat-mode.js        # 聊天模式脚本
+|   ├── components.js       # 组件脚本
+│   └── model-selector-fix.js    # 模型选择器脚本
+├── styles/
+│   ├── chat-mode.css       # 聊天模式样式
+│   ├── components.css       # 组件样式
+│   ├── ai-search.css       # AI搜索页面样式
+│   ├── ai-search-fixed-button.css # AI搜索固定按钮样式
+│   └── chat-mode.css # 聊天模式样式
 └── images/                # 资源文件目录
     ├── AISEARCH.png       # AI搜索Logo
     ├── favicon.ico        # 网站图标
@@ -23,7 +36,7 @@ ai-search-project/
 
 ## 功能特性
 - AI智能搜索对话
-- 多模型支持 (GLM-4, GLM-4V, DeepSeek-R1, etc.)
+- 多模型支持
 - 文件上传支持
 - 深度搜索功能
 - AI绘图功能
@@ -45,8 +58,7 @@ ai-search-project/
 - 需要网络连接以访问AI服务
 - 建议使用现代浏览器以获得最佳体验
 
-## 在线演示
-可以直接下载项目文件到本地，然后用浏览器打开 `ai-search.html` 文件即可使用。
-
-## 许可证
-MIT License
+<footer><center>
+<p style="text-align: center; font-size: 14px;">© 2025 AI Search</p>
+<p style="text-align: center; font-size: 12px;"><a href="https://chengyuxuan.top">筑梦项目阁</a></p>
+</footer>

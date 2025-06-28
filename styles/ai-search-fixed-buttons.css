@@ -1,0 +1,165 @@
+/* =====================================
+   固定按钮布局 - 防止界面变化时位置偏移
+   ===================================== */
+
+.settings-btn,
+.collapse-btn,
+.clear-history-btn {
+    position: fixed !important;
+    z-index: 1000;
+    transition: all var(--transition-normal);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* 设置按钮固定位置 */
+.settings-btn {
+    right: 20px;
+    bottom: 20px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    font-size: 1.3rem;
+    box-shadow: 0 8px 32px rgba(var(--primary-color-rgb), 0.4);
+}
+
+.settings-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 48px rgba(var(--primary-color-rgb), 0.6);
+}
+
+/* 折叠按钮固定位置 */
+.collapse-btn {
+    right: 20px;
+    bottom: 90px; /* 设置按钮上方，避免重叠 */
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    font-size: 1.2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.collapse-btn:hover {
+    transform: scale(1.1);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.15));
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
+}
+
+/* 清除历史按钮固定位置 */
+.clear-history-btn {
+    right: 20px;
+    bottom: 150px; /* 折叠按钮上方，避免重叠 */
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--danger-color), #ff6b6b);
+    color: white;
+    font-size: 1.2rem;
+    box-shadow: 0 8px 32px rgba(var(--danger-color-rgb), 0.4);
+}
+
+.clear-history-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 48px rgba(var(--danger-color-rgb), 0.6);
+}
+
+/* 聊天模式下按钮位置调整 */
+.settings-btn.chat-mode {
+    bottom: 120px; /* 避免被固定搜索框遮挡 */
+}
+
+.collapse-btn.chat-mode {
+    bottom: 180px; /* 设置按钮上方 */
+}
+
+.clear-history-btn.chat-mode {
+    bottom: 240px; /* 折叠按钮上方 */
+}
+
+/* 确保所有控制按钮高度一致 */
+.deep-search-btn,
+.ai-draw-btn,
+.file-upload-btn {
+    min-height: 44px;
+    height: 44px;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    transition: all var(--transition-normal);
+}
+
+/* 搜索区域折叠状态样式 */
+.search-area.collapsed {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.search-area:not(.collapsed) {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+    transition: all 0.3s ease;
+}
+
+/* 折叠按钮状态样式 */
+.collapse-btn.collapsed {
+    background: linear-gradient(135deg, var(--success-color), #27ae60);
+    transform: scale(1.05);
+}
+
+.collapse-btn.collapsed:hover {
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
+    transform: scale(1.15);
+}
+
+/* 响应式设计 - 移动端调整 */
+@media (max-width: 768px) {
+    .settings-btn,
+    .collapse-btn,
+    .clear-history-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.1rem;
+        bottom: 20px;
+    }
+    
+    .settings-btn {
+        right: 20px;
+        bottom: 20px;
+    }
+    
+    .collapse-btn {
+        right: 20px;
+        bottom: 80px;
+    }
+    
+    .clear-history-btn {
+        right: 20px;
+        bottom: 140px;
+    }
+    
+    .settings-btn.chat-mode {
+        bottom: 100px;
+    }
+    
+    .collapse-btn.chat-mode {
+        bottom: 160px;
+    }
+    
+    .clear-history-btn.chat-mode {
+        bottom: 220px;
+    }
+}
