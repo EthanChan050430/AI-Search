@@ -58,7 +58,5 @@ mainpage/
 - 需要网络连接以访问AI服务
 - 建议使用现代浏览器以获得最佳体验
 
-<footer><center>
-<p style="text-align: center; font-size: 14px;">© 2025 AI Search</p>
-<p style="text-align: center; font-size: 12px;"><a href="https://chengyuxuan.top">筑梦项目阁</a></p>
-</footer>
+
+<p style="text-align: center; font-size: 14px;">© 2025 AI Search | <a href="https://chengyuxuan.top">筑梦项目阁</a></p>
